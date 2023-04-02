@@ -1,4 +1,3 @@
- <script>
 		function ageCalculatorSecond() {
 
 		var sliderInput = document.getElementById("slider-range-value2").value;
@@ -24,4 +23,3 @@
     $(document).ready(function() {
          ageCalculatorSecond();
     });
-	</script>

@@ -1,4 +1,3 @@
-<script>
 document.getElementById("form_submit").addEventListener("submit", async function (event) {
     event.preventDefault();
     await postData();
@@ -37,4 +36,3 @@ document.getElementById("form_submit").addEventListener("submit", async function
       .then((response) => response.json())
       .then((json) => console.log(json));
   }
-</script>

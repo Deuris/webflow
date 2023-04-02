@@ -1,4 +1,3 @@
-<script>
 
   async function fetchData() {
     const fieldsToRetrieve = ["First name", "Real date"].map(encodeURIComponent).join("&fields[]=");
@@ -25,4 +24,3 @@
   }
 
   fetchData();
-</script>
