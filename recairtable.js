@@ -4,7 +4,7 @@ document.getElementById("offers_form").addEventListener("submit", async function
   });
 
   async function postData() {
-    const firstLow = document.getElementById("test_1").value;
+    const firstLow = document.getElementById("offers_slider_item_head_title").value;
     const firstHigh = document.getElementById("firstmember_hightPrice").value;
     const secondLow = document.getElementById("test_2").value;
     const secondHigh = document.getElementById("secondmember_hightPrice").value;
