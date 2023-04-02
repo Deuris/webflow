@@ -23,3 +23,30 @@
     $(document).ready(function() {
          ageCalculatorSecond();
     });
+
+    noUiSlider.create(anotherslider, {
+      start: [50],
+      range: {
+          'min': [50],
+          'max': [150]
+      },
+      step: 10,
+      connect: [true, false],
+      format: wNumb({
+        decimals: 0,
+        thousand: '',
+        suffix: '€'
+      })
+  });
+  
+  var secondInput = document.getElementById('slider-range-value2');
+  
+  anotherslider.noUiSlider.on('update', function (values, handle) {
+      secondInput.value = values[handle];
+      ageCalculatorSecond();
+  });
+  
+  secondInput.addEventListener('change', function () {
+      anotherslider.noUiSlider.set(this.value);
+      ageCalculatorSecond();
+  });

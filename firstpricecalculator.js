@@ -23,3 +23,36 @@
     $(document).ready(function() {
          ageCalculator();
     });
+
+    var slider = document.getElementById('slider-range');
+var anotherslider = document.getElementById('slider-range2');
+
+noUiSlider.create(slider, {
+    start: [50],
+    range: {
+        'min': [50],
+        'max': [150]
+    },
+    step: 10,
+    connect: [true, false],
+    format: wNumb({
+      decimals: 0,
+      thousand: '',
+      suffix: '€'
+    })
+});
+
+
+var inputFormat = document.getElementById('slider-range-value');
+
+slider.noUiSlider.on('update', function (values, handle) {
+    inputFormat.value = values[handle];
+    ageCalculator();
+    
+});
+
+inputFormat.addEventListener('change', function () {
+    slider.noUiSlider.set(this.value);
+    ageCalculator();
+    
+});
