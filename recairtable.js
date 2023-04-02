@@ -4,9 +4,9 @@ document.getElementById("offers_form").addEventListener("submit", async function
   });
 
   async function postData() {
-    const firstLow = document.getElementById("test_text").value;
+    const firstLow = document.getElementById("test_title").value;
     const firstHigh = document.getElementById("firstmember_hightPrice").value;
-    const secondLow = document.getElementById("test_text").value;
+    const secondLow = document.getElementById("test_title_2").value;
     const secondHigh = document.getElementById("secondmember_hightPrice").value;
     const firstSlider = document.getElementById("slider-range-value").value;
     const secondSlider = document.getElementById("slider-range-value2").value;
