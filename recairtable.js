@@ -4,11 +4,12 @@ document.getElementById("offers_form").addEventListener("submit", async function
   });
 
   async function postData() {
-    const firstLow = document.getElementById("slider-range-value").value;
+    const firstLow = document.getElementById("firstmember_lowPrice").value;
     const firstHigh = document.getElementById("firstmember_hightPrice").value;
-    const secondLow = document.getElementById("slider-range-value2").value;
+    const secondLow = document.getElementById("secondmember_lowPrice").value;
     const secondHigh = document.getElementById("secondmember_hightPrice").value;
-
+    const firstSlider = document.getElementById("slider-range-value").value;
+    const secondSlider = document.getElementById("slider-range-value2").value;
 
     let data = {
       records: [
@@ -18,6 +19,9 @@ document.getElementById("offers_form").addEventListener("submit", async function
             "First High": firstHigh,
             "Second Low": secondLow,
             "Second High": secondHigh,
+            "First Slider": firstSlider,
+            "Second Slider": secondSlider,
+
           },
         },
       ],
