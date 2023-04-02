@@ -4,10 +4,10 @@ document.getElementById("offers_form").addEventListener("submit", async function
   });
 
   async function postData() {
-    const firstLow = document.getElementById("test_title").textContent;
-    const firstHigh = document.getElementById("firstmember_hightPrice").value;
-    const secondLow = document.getElementById("test_title_2").textContent;
-    const secondHigh = document.getElementById("secondmember_hightPrice").value;
+    const firstLow = document.getElementById("firstmember_lowPrice").textContent;
+    const firstHigh = document.getElementById("firstmember_hightPrice").textContent;
+    const secondLow = document.getElementById("secondmember_lowPrice").textContent;
+    const secondHigh = document.getElementById("secondmember_hightPrice").textContent;
     const firstSlider = document.getElementById("slider-range-value").value;
     const secondSlider = document.getElementById("slider-range-value2").value;
 
