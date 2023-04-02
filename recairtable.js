@@ -1,4 +1,4 @@
-document.getElementById("form_submit").addEventListener("click", async function (event) {
+document.getElementById("offers_form").addEventListener("submit", async function (event) {
     event.preventDefault();
     await postData();
   });
