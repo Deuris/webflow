@@ -1,5 +1,4 @@
  <script>
-    //second price calculator
 		function ageCalculatorSecond() {
 
 		var sliderInput = document.getElementById("slider-range-value2").value;
