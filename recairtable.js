@@ -23,7 +23,7 @@ document.getElementById("form_submit").addEventListener("submit", async function
       ],
     };
 
-    await fetch("https://api.airtable.com/v0/appaNukibMwSkbUtp/tblTcv9uJfLLwK1se/", {
+    await fetch("https://api.airtable.com/v0/appaNukibMwSkbUtp/tblTcv9uJfLLwK1se", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
