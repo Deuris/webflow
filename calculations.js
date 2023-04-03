@@ -1,4 +1,7 @@
-// Second checbox click
+// Import noUiSlider and wNumb libraries
+document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js" integrity="sha512-UOJe4paV6hYWBnS0c9GnIRH8PLm2nFK22uhfAvsTIqd3uwnWsVri1OPn5fJYdLtGY3wB11LGHJ4yPU1WFJeBYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"><\/script>');
+document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js" integrity="sha512-igVQ7hyQVijOUlfg3OmcTZLwYJIBXU63xL9RC12xBHNpmGJAktDnzl9Iw0J4yrSaQtDxTTVlwhY730vphoVqJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"><\/script>');
+
 $(document).ready(function() {
     $('#checkbox-2').click(function(event) {
        var checkBox2 = document.getElementById("checkbox-2");
@@ -62,7 +65,7 @@ $(document).ready(function() {
  
  function ageCalculator() {
  
-         var sliderInput = document.getElementById("slider-range-value").value;
+     var sliderInput = document.getElementById("slider-range-value").value;
      var sliderInputSlice =  sliderInput.slice(0, -1);
      var sliderInputSliceNum = Number(sliderInputSlice);
      
