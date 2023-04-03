@@ -1,6 +1,24 @@
 // Import noUiSlider and wNumb libraries
-document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js" integrity="sha512-UOJe4paV6hYWBnS0c9GnIRH8PLm2nFK22uhfAvsTIqd3uwnWsVri1OPn5fJYdLtGY3wB11LGHJ4yPU1WFJeBYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"><\/script>');
-document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js" integrity="sha512-igVQ7hyQVijOUlfg3OmcTZLwYJIBXU63xL9RC12xBHNpmGJAktDnzl9Iw0J4yrSaQtDxTTVlwhY730vphoVqJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"><\/script>');
+function loadScript(url, callback) {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = url;
+
+    script.onload = function () {
+        callback();
+    };
+
+    document.head.appendChild(script);
+}
+
+loadScript("https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js", function () {
+    loadScript("https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js", function () {
+        // Your existing JavaScript code
+        $(document).ready(function () {
+            // ...
+        });
+    });
+});
 
 $(document).ready(function() {
     $('#checkbox-2').click(function(event) {
