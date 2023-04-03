@@ -1,25 +1,5 @@
-// Import noUiSlider and wNumb libraries
-function loadScript(url, callback) {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = url;
 
-    script.onload = function () {
-        callback();
-    };
-
-    document.head.appendChild(script);
-}
-
-loadScript("https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js", function () {
-    loadScript("https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js", function () {
-        // Your existing JavaScript code
-        $(document).ready(function () {
-            // ...
-        });
-    });
-});
-
+// Second checbox click
 $(document).ready(function() {
     $('#checkbox-2').click(function(event) {
        var checkBox2 = document.getElementById("checkbox-2");
