@@ -1,0 +1,100 @@
+<script>
+  let phoneNumberFromAirtable = ""; // Declare a variable to store the phone number from Airtable
+
+  async function fetchData() {
+    const fieldsToRetrieve = ["Calculation"].map(encodeURIComponent).join("&fields[]=");
+
+    await fetch(`https://api.airtable.com/v0/appaNukibMwSkbUtp/tblYqFxuHf0Ns4wgg?sort[0][field]=_createdTime&sort[0][direction]=desc&maxRecords=1&fields[]=${fieldsToRetrieve}`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: "Bearer keyW9wlscQjYRuR2l",
+      },
+      mode: "cors",
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+
+        // Assuming you want to use the newest record's data
+        const record = json.records[0];
+
+        // Save the "Calculation" field value as the phone number
+        phoneNumberFromAirtable = record.fields.Calculation;
+      });
+  }
+
+  fetchData();
+
+   var phoneReuse = document.getElementById("phone_number_1");
+
+   document.getElementById('sms_link_1').addEventListener('click', async () => {
+    const phoneNumber = phoneNumberFromAirtable || ""; 
+ // Replace with the recipient's phone number
+    const message = 'Votre code de validation est: 867432'; // Replace with your desired SMS message
+
+    const apiKey = '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'; // Replace with your SendinBlue API key
+    const url = 'https://api.sendinblue.com/v3/transactionalSMS/sms';
+
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('api-key', apiKey);
+
+    const body = JSON.stringify({
+      sender: 'PREVOIR', // Replace with your sender name or phone number
+      recipient: phoneNumber,
+      content: message,
+    });
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: headers,
+        body: body,
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('SMS sent successfully:', data);
+        alert('SMS sent successfully');
+      } else {
+        console.error('Error sending SMS:', data);
+        alert('Error sending SMS');
+      }
+    } catch (error) {
+      console.error('Error sending SMS:', error);
+      alert('Error sending SMS');
+    }
+});
+</script>
+
+<script>
+
+const code = document.getElementById("sms_number");
+code.addEventListener("input", updateValue);
+
+  
+function updateValue(e) {
+  const link = document.getElementById("capcha-btn"); 
+  if (code.value.length >= 6) {
+    $(link).removeAttr("disable"); 
+    $(link).removeClass("disabled-btn");
+
+  } else { 
+    $(link).attr("disable", "disable"); 
+    $(link).addClass("disabled-btn"); 
+  } 
+}
+
+$('#sms_number').keypress(function() {
+    if (this.value.length >= 6) {
+        return true;
+    }
+});
+$("#capcha-btn").on("click", function(event){ 
+    if ($(this).is("[disable]")) { 
+        event.preventDefault(); 
+    } 
+});
+</script>

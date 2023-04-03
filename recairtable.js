@@ -10,6 +10,8 @@ document.getElementById("offers_form").addEventListener("submit", async function
     const secondHigh = document.getElementById("secondmember_hightPrice").textContent;
     const firstSlider = document.getElementById("slider-range-value").value;
     const secondSlider = document.getElementById("slider-range-value2").value;
+    const birthDate2 = document.getElementById("offer_secondmember_date").value;
+
 
     let data = {
       records: [
@@ -21,6 +23,7 @@ document.getElementById("offers_form").addEventListener("submit", async function
             "Second High": secondHigh,
             "First Slider": firstSlider,
             "Second Slider": secondSlider,
+            "Birth date2": birthDate2,
 
           },
         },
