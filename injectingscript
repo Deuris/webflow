@@ -1,0 +1,38 @@
+ <script> //initialization of all scripts (fetch airtable + fill the inputs, create pricing calculator + initialize them, record prices and prenom)
+ function injectInjectionScript() {
+    const webflowURLs = {
+        production: 'https://owen-prevoir-prototype.webflow.io/offers', // production URL for your Webflow site
+    };
+    const CDNURLs = {
+        production: 'https://08d4e53e.webflow-97c.pages.dev/', // production URL for your custom code on CloudFlare CDN
+    };
+    const scriptsPaths = {
+        // add the scripts that you want to inject to production site and this would inject the scripts in the master branch
+        production: [
+            'airtablerecord.js',
+            'firstandsecond.js',
+            'recairtable.js',
+        ],
+        
+    };
+    const productionHost = new URL(webflowURLs.production).hostname;
+    const url = window.location.hostname;
+    if (url === productionHost) {
+        const scriptURLs = scriptsPaths.production.map(script => `${CDNURLs.production}${script}`);
+        Promise.all(scriptURLs.map(injectScript)).then(() => console.log('All production scripts loaded successfully'));
+    }
+}
+
+function injectScript(src) {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.src = src;
+        script.addEventListener('load', evt => resolve(evt.target));
+        script.addEventListener('error', e => reject(e.error));
+        document.body.appendChild(script);
+    });
+}
+
+injectInjectionScript();
+</script>
