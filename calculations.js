@@ -76,9 +76,7 @@ function ageCalculator() {
      return startPriceHight.innerHTML =  calculFixed,
      startPriceLow.innerHTML =  calculLowFixed;
  }
- $(document).ready(function() {
-   ageCalculator();
- });
+ setTimeout(ageCalculator, 2000);
  var slider = document.getElementById('slider-range');
  var anotherslider = document.getElementById('slider-range2');
  noUiSlider.create(slider, {
