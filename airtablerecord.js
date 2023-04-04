@@ -24,5 +24,4 @@
   }
 
   fetchData();
-  ageCalculator();
 
