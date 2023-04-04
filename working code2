@@ -1,0 +1,145 @@
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js" integrity="sha512-UOJe4paV6hYWBnS0c9GnIRH8PLm2nFK22uhfAvsTIqd3uwnWsVri1OPn5fJYdLtGY3wB11LGHJ4yPU1WFJeBYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js" integrity="sha512-igVQ7hyQVijOUlfg3OmcTZLwYJIBXU63xL9RC12xBHNpmGJAktDnzl9Iw0J4yrSaQtDxTTVlwhY730vphoVqJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    async function injectInjectionScript() {
+        const webflowURLs = {
+            production: 'https://owen-prevoir-prototype.webflow.io/offers', // production URL for your Webflow site
+        };
+        const CDNURLs = {
+            production: 'https://442b4372.webflow-97c.pages.dev/', // production URL for your custom code on CloudFlare CDN
+        };
+        const scriptsPaths = {
+            // add the scripts that you want to inject to production site and this would inject the scripts in the master branch
+            production: [
+                'https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js',
+               'airtablerecord.js',
+                'calculations.js',
+                'recairtable.js',
+            ],
+        };
+        const productionHost = new URL(webflowURLs.production).hostname;
+        const url = window.location.hostname;
+        if (url === productionHost) {
+            const scriptURLs = scriptsPaths.production.map(script => script.startsWith('http') ? script : `${CDNURLs.production}${script}`);
+            await injectAllScripts(scriptURLs);
+        }
+    }
+
+    async function injectAllScripts(scriptURLs) {
+        for (const scriptURL of scriptURLs) {
+            await injectScript(scriptURL);
+        }
+        console.log('All production scripts loaded successfully');
+    }
+
+    function injectScript(src) {
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.type = 'module';
+            script.src = src;
+            script.addEventListener('load', evt => resolve(evt.target));
+            script.addEventListener('error', e => reject(e.error));
+            document.body.appendChild(script);
+        });
+    }
+
+    injectInjectionScript();
+</script>
+<script>
+// First checbox click
+$(document).ready(function() {
+    $('#checkbox').click(function(event) {
+    var checkBox = document.getElementById("checkbox");
+    if (checkBox.checked == true){
+     $(this).parents('.offers_slider_item_overlay').addClass('active');
+     $(this).parents('.offers_slider_item_overlay').find('.offers_slider_item_range').addClass('active');
+     CheckActive();
+     $(this).parents('.offers_slider_item_overlay').find('.offers_slider_item_toplabel_input').attr("required","required");
+    } else {
+     $('.offers_slider_item_overlay').removeClass('active');
+     $('.offers_slider_item_overlay').find('.offers_slider_item_range').removeClass('active');
+     CheckDisable();
+     $("#checkbox-2").prop( "checked", false );
+     $(this).parents('.offers_slider_item_overlay').find('.offers_slider_item_toplabel_input').removeAttr("required");
+     $("#checkbox-2").parents('.offers_slider_item_overlay').find('.offers_slider_item_toplabel_input').removeAttr("required");
+    }
+   });
+   });
+   // OnInput first slider Input
+   $(document).ready(function() {
+     var checkBox = document.getElementById("checkbox");
+     var slider_input = document.getElementById('slider-range-value');      
+     slider_input.oninput = function() {
+        checkBox.checked = true;
+        $(this).parents('.offers_slider_item_overlay').find('.offers_slider_item_range').addClass('active');
+        $(this).parents('.offers_slider_item_overlay').addClass('active');
+        CheckActive();
+        $(this).parents('.offers_slider_item_overlay').find('.offers_slider_item_toplabel_input').attr("required","required");
+      };
+   });
+   // OnInput second slider Input
+   $(document).ready(function() {
+     var checkBox = document.getElementById("checkbox-2");
+     var slider_input = document.getElementById('slider-range-value2');
+     slider_input.oninput = function() {
+       checkBox.checked = true;
+       $(this).parents('.offers_slider_item_overlay').find('.offers_slider_item_range').addClass('active');
+       $(this).parents('.offers_slider_item_overlay').addClass('active');
+       CheckActive();
+       $(this).parents('.offers_slider_item_overlay').find('.offers_slider_item_toplabel_input').attr("required","required");
+     };
+   });
+   function CheckActive() {
+     document.getElementById("checkbox-2").disabled = false;
+   }
+   function CheckDisable() {
+     document.getElementById("checkbox-2").disabled = true;
+   }
+   $(document).ready(function() {
+     CheckDisable()
+   });
+   // Second checbox click
+   $(document).ready(function() {
+    $('#checkbox-2').click(function(event) {
+      var checkBox2 = document.getElementById("checkbox-2");
+      if (checkBox2.checked == true){
+       $(this).parents('.offers_slider_item_overlay').find('.offers_slider_item_range').addClass('active');
+       $(this).parents('.offers_slider_item_overlay').addClass('active');
+       $(this).parents('.offers_slider_item_overlay').find('.offers_slider_item_toplabel_input').attr("required", "required");
+      } else {
+       $(this).parents('.offers_slider_item_overlay').removeClass('active');
+       $(this).parents('.offers_slider_item_overlay').find('.offers_slider_item_range').removeClass('active');
+       $(this).parents('.offers_slider_item_overlay').find('.offers_slider_item_toplabel_input').removeAttr("required");
+        }
+   });
+   });
+    
+    $("#offers_check").click(function() { return false; });
+    // redirect on form submission
+    document.addEventListener("DOMContentLoaded", function() {
+      var form = document.getElementById("offers_form");
+      form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        var checkBox = document.getElementById("checkbox-2"); 
+        var checkBox2 = document.getElementById("checkbox"); 
+        if (checkBox.checked  && checkBox2.checked) {
+          window.location.href = "https://owen-prevoir-prototype.webflow.io/insurance-registration";
+        } else if (checkBox2.checked) {
+          window.location.href = "https://owen-prevoir-prototype.webflow.io/insurance-registration-2";
+        } else {
+          window.location.href = "https://owen-prevoir-prototype.webflow.io/insurance-registration-2-free";
+        }
+   });
+   });
+    // prevent form submission on enter
+   $(document).ready(function() {
+     $('#email-form-2').keydown(function(event){
+     if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+     }
+   });
+   });
+</script>
