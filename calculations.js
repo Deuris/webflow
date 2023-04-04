@@ -73,8 +73,9 @@ function ageCalculator() {
   var startPriceLow = document.getElementById("firstmember_lowPrice");
   var calculLow = (calculFixed / 2);
   var calculLowFixed = calculLow.toFixed(2);
-     return startPriceHight.innerHTML =  calculFixed,
-     startPriceLow.innerHTML =  calculLowFixed;
+  return startPriceHight.innerHTML =  calculFixed.replace(/\./g, ','),
+  startPriceLow.innerHTML =  calculLowFixed.replace(/\./g, ',');
+  
  }
  setTimeout(ageCalculator, 2000);
  var slider = document.getElementById('slider-range');
@@ -201,6 +202,7 @@ function ageCalculatorSecond() {
  var calculLow = (calculFixed / 2);
  var calculLowFixed = calculLow.toFixed(2);
  
- return startPriceHight.innerHTML =  calculFixed,
- startPriceLow.innerHTML =  calculLowFixed;
+ return startPriceHight.innerHTML =  calculFixed.replace(/\./g, ','),
+ startPriceLow.innerHTML =  calculLowFixed.replace(/\./g, ',');
+ 
 }
