@@ -17,9 +17,12 @@
         // Assuming you want to use the newest record's data
         const record = json.records[0];
 
+        nameText1 = record.fields["First name"] || "";
+
+
         // Fill the data into the input fields
         document.getElementById("offer_firstmember_date").value = record.fields["Real date"] || "";
-        document.getElementById("h5_name").value = record.fields["First name"] || "";
+        document.getElementById("h5_name").innerText = record.fields["First name"] || "";
 
       });
   }
