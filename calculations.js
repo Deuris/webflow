@@ -1,6 +1,8 @@
 $("#offer_firstmember_date").mask("99/99/9999",{completed: function(){ageCalculator();}});
 $("#offer_secondmember_date").mask("99/99/9999",{completed: function(){ageCalculatorSecond();}});
 function ageCalculator() {
+    let sliderCena;
+    let agecena;
   var sliderInput = document.getElementById("slider-range-value").value;
   var sliderInputSlice =  sliderInput.slice(0, -1);
   var sliderInputSliceNum = Number(sliderInputSlice);
@@ -128,6 +130,8 @@ secondInput.addEventListener('change', function () {
   ageCalculatorSecond();
 });
 function ageCalculatorSecond() {
+    let sliderCena;
+    let agecena;
  var sliderInput = document.getElementById("slider-range-value2").value;
  var sliderInputSlice =  sliderInput.slice(0, -1);
  var sliderInputSliceNum = Number(sliderInputSlice);
