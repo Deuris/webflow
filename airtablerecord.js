@@ -18,7 +18,6 @@
         const record = json.records[0];
 
         // Fill the data into the input fields
-        document.getElementById("prenom_id").value = record.fields["First name"] || "";
         document.getElementById("offer_firstmember_date").value = record.fields["Real date"] || "";
         document.getElementById("h5_name").value = record.fields["First name"] || "";
 
