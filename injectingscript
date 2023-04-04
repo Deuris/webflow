@@ -10,7 +10,7 @@
         // add the scripts that you want to inject to production site and this would inject the scripts in the master branch
         production: [
             'airtablerecord.js',
-            'firstandsecond.js',
+            'calculations.js',
             'recairtable.js',
         ],
         
